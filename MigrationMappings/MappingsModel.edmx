@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MigrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="System" Type="varchar" MaxLength="10" />
+          <Property Name="Area" Type="int" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Local_Description" Type="varchar" MaxLength="50" />
+          <Property Name="MapTo" Type="int" />
+        </EntityType>
+        <EntityType Name="RefArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="50" />
+          <Property Name="LUP_TABLE" Type="char" MaxLength="3" />
+          <Property Name="Prefix" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="RefVal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="PARIS_code" Type="varchar" MaxLength="10" />
+          <Property Name="Data_Dic" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Map_RefArea">
+          <End Role="RefArea" Type="Self.RefArea" Multiplicity="0..1" />
+          <End Role="Map" Type="Self.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefArea">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Map_RefVal">
+          <End Role="RefVal" Type="Self.RefVal" Multiplicity="0..1" />
+          <End Role="Map" Type="Self.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefVal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="MapTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefVal_RefArea">
+          <End Role="RefArea" Type="Self.RefArea" Multiplicity="0..1" />
+          <End Role="RefVal" Type="Self.RefVal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefArea">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RefVal">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MigrationModelStoreContainer">
+          <EntitySet Name="Map" EntityType="Self.Map" Schema="map" store:Type="Tables" />
+          <EntitySet Name="RefArea" EntityType="Self.RefArea" Schema="map" store:Type="Tables" />
+          <EntitySet Name="RefVal" EntityType="Self.RefVal" Schema="map" store:Type="Tables" />
+          <AssociationSet Name="FK_Map_RefArea" Association="Self.FK_Map_RefArea">
+            <End Role="RefArea" EntitySet="RefArea" />
+            <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Map_RefVal" Association="Self.FK_Map_RefVal">
+            <End Role="RefVal" EntitySet="RefVal" />
+            <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefVal_RefArea" Association="Self.FK_RefVal_RefArea">
+            <End Role="RefArea" EntitySet="RefArea" />
+            <End Role="RefVal" EntitySet="RefVal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MigrationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="System" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Local_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MapTo" Type="Int32" />
+          <NavigationProperty Name="RefArea" Relationship="Self.FK_Map_RefArea" FromRole="Map" ToRole="RefArea" />
+          <NavigationProperty Name="RefVal" Relationship="Self.FK_Map_RefVal" FromRole="Map" ToRole="RefVal" />
+        </EntityType>
+        <EntityType Name="RefArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LUP_TABLE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Maps" Relationship="Self.FK_Map_RefArea" FromRole="RefArea" ToRole="Map" />
+          <NavigationProperty Name="RefVals" Relationship="Self.FK_RefVal_RefArea" FromRole="RefArea" ToRole="RefVal" />
+        </EntityType>
+        <EntityType Name="RefVal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PARIS_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Dic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Maps" Relationship="Self.FK_Map_RefVal" FromRole="RefVal" ToRole="Map" />
+          <NavigationProperty Name="RefArea" Relationship="Self.FK_RefVal_RefArea" FromRole="RefVal" ToRole="RefArea" />
+        </EntityType>
+        <Association Name="FK_Map_RefArea">
+          <End Role="RefArea" Type="Self.RefArea" Multiplicity="0..1" />
+          <End Role="Map" Type="Self.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefArea">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Map_RefVal">
+          <End Role="RefVal" Type="Self.RefVal" Multiplicity="0..1" />
+          <End Role="Map" Type="Self.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefVal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="MapTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefVal_RefArea">
+          <End Role="RefArea" Type="Self.RefArea" Multiplicity="0..1" />
+          <End Role="RefVal" Type="Self.RefVal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefArea">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RefVal">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MappingsDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Maps" EntityType="Self.Map" />
+          <EntitySet Name="RefAreas" EntityType="Self.RefArea" />
+          <EntitySet Name="RefVals" EntityType="Self.RefVal" />
+          <AssociationSet Name="FK_Map_RefArea" Association="Self.FK_Map_RefArea">
+            <End Role="RefArea" EntitySet="RefAreas" />
+            <End Role="Map" EntitySet="Maps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Map_RefVal" Association="Self.FK_Map_RefVal">
+            <End Role="RefVal" EntitySet="RefVals" />
+            <End Role="Map" EntitySet="Maps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefVal_RefArea" Association="Self.FK_RefVal_RefArea">
+            <End Role="RefArea" EntitySet="RefAreas" />
+            <End Role="RefVal" EntitySet="RefVals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MigrationModelStoreContainer" CdmEntityContainer="MappingsDBContext">
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="MigrationModel.Map">
+              <MappingFragment StoreEntitySet="Map">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="System" ColumnName="System" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Local_Description" ColumnName="Local_Description" />
+                <ScalarProperty Name="MapTo" ColumnName="MapTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefAreas">
+            <EntityTypeMapping TypeName="MigrationModel.RefArea">
+              <MappingFragment StoreEntitySet="RefArea">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="LUP_TABLE" ColumnName="LUP_TABLE" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefVals">
+            <EntityTypeMapping TypeName="MigrationModel.RefVal">
+              <MappingFragment StoreEntitySet="RefVal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PARIS_code" ColumnName="PARIS_code" />
+                <ScalarProperty Name="Data_Dic" ColumnName="Data_Dic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
