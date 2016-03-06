@@ -23,7 +23,7 @@ namespace MigrationMappings
         public int ID { get; set; }
         public Nullable<int> Area { get; set; }
         public string Description { get; set; }
-        public string PARIS_code { get; set; }
+        public string PARIS_Code { get; set; }
         public string Data_Dic { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

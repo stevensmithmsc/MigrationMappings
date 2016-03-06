@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="694c9f4a9dfd442f8922c15bfbfdd874" Name="Diagram1">
-        <EntityTypeShape EntityType="MigrationModel.Map" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MigrationModel.RefArea" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="MigrationModel.RefVal" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <AssociationConnector Association="MigrationModel.FK_Map_RefArea" ManuallyRouted="false" />
-        <AssociationConnector Association="MigrationModel.FK_Map_RefVal" ManuallyRouted="false" />
-        <AssociationConnector Association="MigrationModel.FK_RefVal_RefArea" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MigrationModel.Map" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="MigrationModel.RefArea" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="MigrationModel.RefVal" Width="1.5" PointX="3" PointY="6.375" />
+        <AssociationConnector Association="MigrationModel.FK_Map_RefArea" />
+        <AssociationConnector Association="MigrationModel.FK_Map_RefVal" />
+        <AssociationConnector Association="MigrationModel.FK_RefVal_RefArea" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
