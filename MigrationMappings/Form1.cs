@@ -55,10 +55,15 @@ namespace MigrationMappings
             ldescCol.Name = "Local Description";
             ldescCol.CellTemplate = new DataGridViewTextBoxCell();
             dataGridView1.Columns.Add(ldescCol);
-            DataGridViewColumn mtCol = new DataGridViewColumn();
+            DataGridViewComboBoxColumn mtCol = new DataGridViewComboBoxColumn();
             mtCol.DataPropertyName = "MapTo";
             mtCol.Name = "Map To";
-            mtCol.CellTemplate = new DataGridViewTextBoxCell();
+            //            mtCol.CellTemplate = new DataGridViewTextBoxCell();
+            RefArea theArea = ((RefArea)comboBox1.SelectedItem);
+            mtCol.DataSource = theArea.RefVals.ToList();
+            mtCol.ValueMember = "ID";
+            mtCol.DisplayMember = "Description";
+            mtCol.FlatStyle = FlatStyle.Flat;
             dataGridView1.Columns.Add(mtCol);
 
 
@@ -93,6 +98,8 @@ namespace MigrationMappings
             
             dataGridView1.DataSource = theArea.Maps.ToList();
             dataGridView2.DataSource = theArea.RefVals.ToList();
+            if (dataGridView1.Columns.Count == 5)
+                ((DataGridViewComboBoxColumn)dataGridView1.Columns[4]).DataSource = theArea.RefVals.ToList();
 
             toolStripStatusLabel1.Text = db.ChangeTracker.HasChanges().ToString();
 
