@@ -22,9 +22,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Area" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="LUP_TABLE" Type="varchar" MaxLength="10" />
-          <Property Name="Prefix" Type="varchar" MaxLength="10" />
+          <Property Name="Area" Type="varchar" MaxLength="50" />
+          <Property Name="LUP_TABLE" Type="char" MaxLength="3" />
+          <Property Name="Prefix" Type="char" MaxLength="10" />
         </EntityType>
         <EntityType Name="RefVal">
           <Key>
@@ -33,8 +33,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Area" Type="int" />
           <Property Name="Description" Type="varchar" MaxLength="50" />
-          <Property Name="PARIS_Code" Type="varchar" MaxLength="10" />
-          <Property Name="Data_Dic" Type="varchar" MaxLength="20" />
+          <Property Name="PARIS_code" Type="varchar" MaxLength="10" />
+          <Property Name="Data_Dic" Type="varchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Map_RefArea">
           <End Role="RefArea" Type="Self.RefArea" Multiplicity="0..1" />
@@ -129,9 +129,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Area" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LUP_TABLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LUP_TABLE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Maps" Relationship="MigrationModel.FK_Map_RefArea" FromRole="RefArea" ToRole="Map" />
           <NavigationProperty Name="RefVals" Relationship="MigrationModel.FK_RefVal_RefArea" FromRole="RefArea" ToRole="RefVal" />
         </EntityType>
@@ -142,8 +142,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Area" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PARIS_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Data_Dic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PARIS_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Dic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Maps" Relationship="MigrationModel.FK_Map_RefVal" FromRole="RefVal" ToRole="Map" />
           <NavigationProperty Name="RefArea" Relationship="MigrationModel.FK_RefVal_RefArea" FromRole="RefVal" ToRole="RefArea" />
         </EntityType>
@@ -216,7 +216,7 @@
             <EntityTypeMapping TypeName="MigrationModel.RefVal">
               <MappingFragment StoreEntitySet="RefVal">
                 <ScalarProperty Name="Data_Dic" ColumnName="Data_Dic" />
-                <ScalarProperty Name="PARIS_Code" ColumnName="PARIS_Code" />
+                <ScalarProperty Name="PARIS_code" ColumnName="PARIS_code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

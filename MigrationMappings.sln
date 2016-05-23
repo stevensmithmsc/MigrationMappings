@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationMappings", "MigrationMappings\MigrationMappings.csproj", "{6DA6EB6E-68A6-4552-B547-6AEFD21BB7B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MappingsModel", "MappingsModel\MappingsModel.csproj", "{3DC4F96E-5178-4543-9A75-25206D46E128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6DA6EB6E-68A6-4552-B547-6AEFD21BB7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA6EB6E-68A6-4552-B547-6AEFD21BB7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA6EB6E-68A6-4552-B547-6AEFD21BB7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DC4F96E-5178-4543-9A75-25206D46E128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC4F96E-5178-4543-9A75-25206D46E128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC4F96E-5178-4543-9A75-25206D46E128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC4F96E-5178-4543-9A75-25206D46E128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

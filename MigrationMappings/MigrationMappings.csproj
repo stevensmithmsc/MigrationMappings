@@ -61,32 +61,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map.cs">
-      <DependentUpon>MappingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MappingsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MappingsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MappingsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingsModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefArea.cs">
-      <DependentUpon>MappingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RefVal.cs">
-      <DependentUpon>MappingsModel.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,23 +75,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="MappingsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MappingsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MappingsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MappingsModel.edmx</DependentUpon>
-      <LastGenOutput>MappingsModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="MappingsModel.edmx.diagram">
-      <DependentUpon>MappingsModel.edmx</DependentUpon>
-    </None>
-    <None Include="MappingsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MappingsModel.edmx</DependentUpon>
-      <LastGenOutput>MappingsModel.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MappingsModel\MappingsModel.csproj">
+      <Project>{3dc4f96e-5178-4543-9a75-25206d46e128}</Project>
+      <Name>MappingsModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
