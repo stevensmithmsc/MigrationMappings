@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationMappings", "Migrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MappingsModel", "MappingsModel\MappingsModel.csproj", "{3DC4F96E-5178-4543-9A75-25206D46E128}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationMappingsWPF", "MigrationMappingsWPF\MigrationMappingsWPF.csproj", "{B85216AB-26EF-4861-A404-EA913E83C260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationMappingsViewModels", "MigrationMappingsViewModels\MigrationMappingsViewModels.csproj", "{9F599D54-11CB-404C-8898-9EC62D7C6D0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3DC4F96E-5178-4543-9A75-25206D46E128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC4F96E-5178-4543-9A75-25206D46E128}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC4F96E-5178-4543-9A75-25206D46E128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B85216AB-26EF-4861-A404-EA913E83C260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B85216AB-26EF-4861-A404-EA913E83C260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B85216AB-26EF-4861-A404-EA913E83C260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B85216AB-26EF-4861-A404-EA913E83C260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F599D54-11CB-404C-8898-9EC62D7C6D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F599D54-11CB-404C-8898-9EC62D7C6D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F599D54-11CB-404C-8898-9EC62D7C6D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F599D54-11CB-404C-8898-9EC62D7C6D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

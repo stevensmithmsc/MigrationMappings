@@ -84,7 +84,6 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="MappingsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MappingsModel.edmx</DependentUpon>
