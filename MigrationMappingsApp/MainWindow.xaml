@@ -52,7 +52,7 @@
             </Grid>
         </Border>
 
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedArea.Maps}" AutoGenerateColumns="False" AlternationCount="2" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF7F9FE8" >
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Mappings}" AutoGenerateColumns="False" AlternationCount="2" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF7F9FE8" SelectionUnit="Cell" SelectionMode="Single" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="System" Binding="{Binding System}"/>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number}"/>
@@ -61,7 +61,7 @@
                 <DataGridTextColumn Header="Map To" Binding="{Binding RefVal.Description}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Grid.Column="1" ItemsSource="{Binding SelectedArea.RefVals}" AutoGenerateColumns="False" >
+        <DataGrid Grid.Column="1" ItemsSource="{Binding Values}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
                 <DataGridTextColumn Header="Data Dictionary" Binding="{Binding Data_Dic}"/>
