@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:MigrationMappingsApp"
         xmlns:vm="clr-namespace:MigrationMappingsApp.ViewModels"
         mc:Ignorable="d"
@@ -52,7 +53,7 @@
             </Grid>
         </Border>
 
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Mappings}" AutoGenerateColumns="False" AlternationCount="2" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF7F9FE8" SelectionUnit="Cell" SelectionMode="Single" >
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Mappings}" AutoGenerateColumns="False" AlternationCount="2" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF7F9FE8" SelectionMode="Single" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="System" Binding="{Binding System}"/>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number}"/>
@@ -69,7 +70,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid Grid.Column="2" Grid.RowSpan="2" />
-        <StatusBar Height="30" VerticalAlignment="Bottom" Background="#FF000078" Foreground="#FFF9F9F9" Grid.Row="6" Grid.ColumnSpan="4"/>
+        <StatusBar Height="30" VerticalAlignment="Bottom" Background="#FF000078" Foreground="#FFF9F9F9" Grid.Row="6" Grid.ColumnSpan="4">
+            <CheckBox IsChecked="{Binding Changed, Mode=OneWay}" />
+            <Button Content="Save Changes" Command="{Binding SaveDBChangesCommand, Mode=OneWay}" />
+        </StatusBar>
         <GridSplitter Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="Black" ShowsPreview="True" ResizeDirection="Rows" Height="5"/>
         <GridSplitter Grid.Column="2"  Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Black" ShowsPreview="True" ResizeDirection="Columns" Width="5"/>
     </Grid>

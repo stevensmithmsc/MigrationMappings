@@ -21,6 +21,7 @@ namespace MigrationMappingsApp.ViewModels
         public RefArea SelectedArea { get { return _SelectedArea; } set { _SelectedArea = value; FilterMapsandValues(); NotifyPropertyChanged();  } }
         public List<Map> Mappings { get; set; }
         public List<RefVal> Values { get; set; }
+        public bool Changed { get { return db.ChangeTracker.HasChanges(); } }
 
 
         public MainViewModel()
@@ -29,7 +30,7 @@ namespace MigrationMappingsApp.ViewModels
             db.RefAreas.OrderBy(a => a.Area).Load();
             Areas = db.RefAreas.Local;
             SelectedArea = Areas.OrderBy(a => a.ID).First();
-            
+            SaveDBChangesCommand = new DelegateCommand<object>(SaveDBChanges);   
         }
 
         private void FilterMapsandValues()
@@ -40,6 +41,7 @@ namespace MigrationMappingsApp.ViewModels
             db.RefVals.Where(v => v.Area == SelectedArea.ID).Load();
             Values = db.RefVals.Where(v => v.Area == SelectedArea.ID).OrderBy(v => v.Description).ToList();
             NotifyPropertyChanged("Values");
+            NotifyPropertyChanged("Changed");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -52,6 +54,12 @@ namespace MigrationMappingsApp.ViewModels
             }
         }
 
-        public ICommand LoadLogFileCommand { get; private set; }
+        public ICommand SaveDBChangesCommand { get; private set; }
+
+        public void SaveDBChanges(object parameter)
+        {
+            db.SaveChanges();
+            NotifyPropertyChanged("Changed");
+        }
     }
 }
